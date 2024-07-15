@@ -1,7 +1,7 @@
 # Route Android Task
 Simple Product List with List of Product API.
 
- Tools:
+ Technologies Used:
 - Kotlin
 - MVVM
 - Clean Architecture
