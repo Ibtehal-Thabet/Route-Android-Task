@@ -6,9 +6,10 @@ Simple Product List with List of Product API.
 - MVVM
 - Clean Architecture
 - Data Binding
+- LiveData
 - Retrofit
 - Dagger-Hilt
-- LiveData
+- Kotlin Coroutines
 - Glide
 - Unit Testing with MockK
 
