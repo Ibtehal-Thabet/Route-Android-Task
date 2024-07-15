@@ -63,7 +63,7 @@ class ProductListViewModelTest {
 
         viewModel.getProducts()
         val value = viewModel.errorLiveData.getOrAwaitValue()
-        assertEquals("error", value.message)
+        assertEquals("error", value)
     }
 
     @Test
