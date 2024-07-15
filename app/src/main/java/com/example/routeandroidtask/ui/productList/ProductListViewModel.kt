@@ -23,7 +23,7 @@ class ProductListViewModel @Inject constructor(
     val productsLiveData = _productsLiveData
 
     val loadingLiveData = MutableLiveData<Boolean>()
-    val errorLiveData = MutableLiveData<String?>()
+    val errorLiveData = MutableLiveData<ViewError>()
 
     private val _searchTextLiveData = MutableLiveData<String>()
     val searchTextLiveData: LiveData<String> get() = _searchTextLiveData
@@ -41,7 +41,11 @@ class ProductListViewModel @Inject constructor(
                     productsLiveData.postValue(result.data)
                 }
                 is ResultWrapper.Error -> {
-                    errorLiveData.postValue(result.message)
+                    errorLiveData.postValue(ViewError(
+                        message = result.message
+                    ) {
+                        getProducts()
+                    })
                 }
 
                 else -> {}
@@ -57,13 +61,17 @@ class ProductListViewModel @Inject constructor(
             loadingLiveData.postValue(false)
             when(result){
                 is ResultWrapper.Loading -> {
-//                    loadingLiveData.postValue(true)
+
                 }
                 is ResultWrapper.Success -> {
                     getSearchedList(query, result.data)
                 }
                 is ResultWrapper.Error -> {
-                    errorLiveData.postValue(result.message)
+                    errorLiveData.postValue(ViewError(
+                        message = result.message
+                    ) {
+                        getSearchedProduct(query = query)
+                    })
                 }
 
                 else -> {}

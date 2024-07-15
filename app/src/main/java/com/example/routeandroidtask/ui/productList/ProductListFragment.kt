@@ -48,7 +48,7 @@ class ProductListFragment: Fragment() {
         }
 
         viewModel.errorLiveData.observe(viewLifecycleOwner){
-            showError(it?:"Error")
+            showError(it.message?:"Error")
         }
 
         viewBinding.productsRecyclerView.adapter = adapter

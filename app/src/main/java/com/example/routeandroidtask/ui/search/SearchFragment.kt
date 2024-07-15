@@ -54,7 +54,7 @@ class SearchFragment: Fragment() {
 
         var searchedText = ""
         viewModel.errorLiveData.observe(viewLifecycleOwner){
-            showError(searchedText, it?:"Error")
+            showError(searchedText, it.message?:"Error")
         }
 
         viewModel.searchTextLiveData.observe(viewLifecycleOwner){
